@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 자바단에서 수행할일을 어디에서 할것인지 주소 적음(이 인터페이스를 참조 하세요!) -->
+<!-- com.spring.mapper.TestMapper에 들어있는 함수들은 여기에서 처리 -->
+<mapper namespace="com.bbs.mapper.BoardMapper">
+
+	<insert id="insert">
+		INSERT INTO board(btitle, bcontent, bwriter) 
+		VALUES(#{btitle}, #{bcontent}, #{bwriter})
+	</insert>
+	
+	<select id="list_all" resultType="com.bbs.model.BoardDTO"> <!-- BoardDTO의 형태로 나옴! -->
+		select * from board order by bno desc
+	</select>
+	
+	<!--  -->
+	<select id="getListPaging" resultType="com.bbs.model.BoardDTO">
+		select * from board limit #{skip}, #{amount}	
+	</select>
+	
+	<!-- 전체 게시물수  -->
+	<select id="getTotal" resultType="int">
+		select count(*) from board
+	</select>
+	
+
+	<delete id="delete">
+		delete from board where bno = #{bno}
+	</delete>
+	
+	<select id="select" resultType="com.bbs.model.BoardDTO">
+		select * from board where bno= #{bno}
+	</select>
+	
+	<update id="update">
+		UPDATE board SET btitle=#{btitle}, bcontent=#{bcontent} WHERE bno=#{bno}
+	</update>
+	
+	
+
+</mapper>

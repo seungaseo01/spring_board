@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 자바단에서 수행할일을 어디에서 할것인지 주소 적음(이 인터페이스를 참조 하세요!) -->
+<!-- com.spring.mapper.TestMapper에 들어있는 함수들은 여기에서 처리 -->
+<mapper namespace="com.bbs.mapper.TestMapper">
+
+<!-- <select  id= 넘어온 함수 이름 resultType=반환타입> -->
+	<select id="nowTime" resultType="String">
+		select now() from dual
+	</select>
+
+</mapper>

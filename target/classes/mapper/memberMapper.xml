@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 자바단에서 수행할일을 어디에서 할것인지 주소 적음(이 인터페이스를 참조 하세요!) -->
+<!-- com.spring.mapper.TestMapper에 들어있는 함수들은 여기에서 처리 -->
+<mapper namespace="com.bbs.mapper.MemberMapper">
+
+	<insert id="insert">
+		INSERT INTO member (mname, mtel, maddr, mage, mgender) VALUES(#{mname}, #{mtel}, #{maddr}, #{mage}, #{mgender});
+	</insert>
+	
+	<select id="list_all" resultType="com.bbs.model.MemberDTO"> <!-- BoardDTO의 형태로 나옴! -->
+		select * from member order by mno desc
+	</select>
+
+	<delete id="delete">
+		DELETE FROM member WHERE mno=#{mno}
+	</delete>
+	
+	<select id="select" resultType="com.bbs.model.MemberDTO">
+		select * from member where mno = #{mno}
+	</select>
+	
+	<update id="update">
+		UPDATE member SET mname=#{mname}, mtel=#{mtel}, maddr=#{maddr}, mage=#{mage}, mgender=#{mgender} WHERE mno=#{mno};		
+	</update>
+	
+	
+
+</mapper>
